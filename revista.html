@@ -1,1 +1,187 @@
-PLACEHOLDER
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DOMI DELIS — Revista Flipbook</title>
+<script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #f0f0f0;
+    font-family: Georgia, 'Times New Roman', serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  h1 {
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: #666;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-weight: normal;
+  }
+  #book { box-shadow: 0 15px 40px rgba(0,0,0,0.15); }
+  .page {
+    background: #fff;
+    padding: 40px 45px;
+    overflow: hidden;
+    position: relative;
+  }
+  .page h2 {
+    color: #1a5276;
+    font-size: 22px;
+    margin-bottom: 16px;
+    font-weight: normal;
+    border-bottom: 2px solid #1a5276;
+    padding-bottom: 8px;
+  }
+  .page p { font-size: 15px; line-height: 1.6; margin-bottom: 12px; color: #333; }
+  .page ul { margin: 10px 0 14px 18px; }
+  .page li { font-size: 14.5px; line-height: 1.5; margin-bottom: 5px; color: #333; }
+  .page-number {
+    position: absolute;
+    bottom: 15px;
+    right: 25px;
+    font-size: 11px;
+    color: #999;
+  }
+  .cover {
+    background: #0f1419;
+    color: white;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+  }
+  .highlight {
+    background: #eaf2f8;
+    padding: 12px 16px;
+    margin: 12px 0;
+    border-left: 3px solid #1a5276;
+  }
+  .controls {
+    margin-top: 25px;
+    display: flex;
+    gap: 10px;
+  }
+  .controls button {
+    background: #1a5276;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-family: Georgia, serif;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+  .controls button:hover { background: #154360; }
+</style>
+</head>
+<body>
+
+<h1>DOMI DELIS · Revista del Modelo de Negocio</h1>
+
+<div id="book">
+  <div class="page" data-density="hard">
+    <div class="cover" style="padding:0; background:#000;">
+      <img src="portada-revista.png" alt="DOMI DELIS" style="width:100%; height:100%; object-fit:cover; display:block;">
+    </div>
+  </div>
+  <div class="page">
+    <h2>Por qué cambiamos</h2>
+    <p>La reunión del 30 de octubre dejó claro el problema: no es solo la falta de domiciliarios. Es que el modelo actual no genera ingresos predecibles.</p>
+    <p>Con las tarifas de zona ($4.000–$14.000) y lo que se paga al domiciliario, el margen por pedido está entre −$250 y +$1.750. Para un salario mínimo (~$2.000.000) harían falta 38–89 pedidos diarios. Santuario no tiene ese volumen.</p>
+    <div class="highlight"><strong>Decisión:</strong> software para tiendas como ingreso principal. Delivery solo como servicio opcional y rentable.</div>
+    <p>La Ley 2466 de 2025 hace que operar como plataforma de reparto sea costoso. Por eso la plataforma no debe intermediar el dinero de las entregas.</p>
+    <div class="page-number">2</div>
+  </div>
+  <div class="page">
+    <h2>El modelo oficial</h2>
+    <p><strong>DOMI DELIS Negocios</strong> — Software mensual para restaurantes y comercios. Catálogo con personalizaciones, QR de mesa, panel de pedidos e historial de ventas. Las tiendas pagan porque les organiza la operación.</p>
+    <p><strong>Marketplace</strong> — Canal de adquisición. La app de consumidores ayuda a que la gente descubra las tiendas. No es la principal fuente de dinero.</p>
+    <p><strong>Delivery</strong> — Opcional. Solo cuando hay domiciliario disponible y el margen es positivo. El domiciliario cobra la tarifa completa directamente.</p>
+    <div class="page-number">3</div>
+  </div>
+  <div class="page">
+    <h2>Qué necesita una tienda de comida rápida</h2>
+    <ul>
+      <li><strong>Nivel 1:</strong> Menú digital + QR de mesa. El cliente pide sin que el mesero anote mal.</li>
+      <li><strong>Nivel 2:</strong> Ver pedidos en tiempo real y estados (recibido → preparando → listo).</li>
+      <li><strong>Nivel 3:</strong> Historial simple y productos más pedidos.</li>
+      <li><strong>Nivel 4:</strong> Personalizaciones claras (obligatorias y opcionales).</li>
+      <li><strong>Nivel 5:</strong> Presencia en el marketplace local.</li>
+    </ul>
+    <p>El delivery es un extra. No es el motivo principal por el que una tienda debería pagar.</p>
+    <div class="page-number">4</div>
+  </div>
+  <div class="page">
+    <h2>Fases de implementación</h2>
+    <p><strong>Fase 0 · 0–6 meses — Demostrar</strong><br>10–15 tiendas fundadoras sin (o con muy baja) mensualidad. Meta: ≥30 pedidos/mes gestionados por la app.</p>
+    <p><strong>Fase 1 · 6–18 meses — Monetizar</strong><br>Activar planes: Pionero (gratis), Básico (~$20.000), Pro (~$35.000). Solo con evidencia de uso real.</p>
+    <p><strong>Fase 2 · 18+ meses — Replicar</strong><br>Licenciar la plantilla a gestores locales en municipios cercanos a $150.000–250.000/mes por municipio.</p>
+    <div class="page-number">5</div>
+  </div>
+  <div class="page">
+    <h2>Métricas y KPIs</h2>
+    <div class="highlight"><strong>Pedidos gestionados / mes:</strong> ≥30 en el mes 6</div>
+    <div class="highlight"><strong>Tiendas con ≥10 pedidos/mes:</strong> ≥10</div>
+    <div class="highlight"><strong>% pedidos atendidos:</strong> >85%</div>
+    <div class="highlight"><strong>Retención de tiendas a 6 meses:</strong> ≥70%</div>
+    <p style="margin-top:14px; font-size:14px;"><strong>Regla de salida:</strong> si en el mes 6 no se cumplen las dos primeras métricas, no se invierte más en logística.</p>
+    <div class="page-number">6</div>
+  </div>
+  <div class="page">
+    <h2>Qué se espera en los próximos meses</h2>
+    <p><strong>Mes 3:</strong> 5–8 tiendas con QR funcionando y al menos 15–20 pedidos/mes totales.</p>
+    <p><strong>Mes 6:</strong> ≥30 pedidos/mes y ≥10 tiendas activas. Decisión de activar planes de pago.</p>
+    <p><strong>Mes 12:</strong> 20–30 tiendas en Santuario con ingresos recurrentes de $500.000–800.000/mes.</p>
+    <p><strong>Mes 18+:</strong> Primeras licencias en municipios vecinos. Ingreso potencial de un salario mínimo con 8 municipios.</p>
+    <div class="highlight">El crecimiento no viene de más motos. Viene de que más tiendas usen la herramienta todos los días.</div>
+    <div class="page-number">7</div>
+  </div>
+  <div class="page" data-density="hard">
+    <div class="cover" style="padding:0; background:#000;">
+      <img src="portada-revista.png" alt="DOMI DELIS" style="width:100%; height:100%; object-fit:cover; display:block;">
+    </div>
+  </div>
+</div>
+
+<div class="controls">
+  <button id="prev">← Anterior</button>
+  <button id="next">Siguiente →</button>
+</div>
+
+<script>
+const pageFlip = new St.PageFlip(document.getElementById('book'), {
+  width: 420,
+  height: 600,
+  size: 'fixed',
+  minWidth: 320,
+  maxWidth: 500,
+  minHeight: 450,
+  maxHeight: 700,
+  showCover: true,
+  mobileScrollSupport: false,
+  drawShadow: true,
+  flippingTime: 800,
+  usePortrait: true,
+  startPage: 0,
+  autoSize: false,
+  maxShadowOpacity: 0.5,
+  showPageCorners: true,
+  disableFlipByClick: false
+});
+
+pageFlip.loadFromHTML(document.querySelectorAll('.page'));
+
+document.getElementById('prev').addEventListener('click', () => pageFlip.flipPrev());
+document.getElementById('next').addEventListener('click', () => pageFlip.flipNext());
+</script>
+
+</body>
+</html>
