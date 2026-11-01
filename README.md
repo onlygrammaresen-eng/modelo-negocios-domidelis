@@ -2,15 +2,9 @@
 
 Documento de trabajo para Alejandro Pérez Restrepo y James David Rincón Bulla.
 
-## Contenido
+## Páginas
 
-- `guia-libro.html`: Guía interactiva en formato libro (Turn.js) con el modelo, fases, KPIs y proyección de crecimiento.
-- Documento principal (versión completa con one-pager, tareas detalladas por niveles y KPIs) disponible en el chat y en los artifacts locales.
-
-## Modelo resumido
-
-1. **Principal**: Software SaaS para tiendas (DOMI DELIS Negocios).
-2. **Canal**: Marketplace de consumidores.
-3. **Opcional**: Delivery solo cuando es rentable y sin intermediación de dinero.
+- [Documento completo](index.html) — One-pager, modelo, fases, tareas por niveles y KPIs.
+- [Guía en formato libro](guia-libro.html) — Versión interactiva con Turn.js.
 
 Santuario, Antioquia — Noviembre 2026.
