@@ -7,9 +7,11 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
   body { font-family: system-ui, -apple-system, sans-serif; }
-  .col { min-height: 400px; }
-  .task { cursor: grab; }
+  .col { min-height: 420px; }
+  .task { cursor: grab; user-select: none; }
   .task:active { cursor: grabbing; }
+  .drop-zone { min-height: 80px; }
+  .drop-zone.drag-over { background: #fef2f2; border-radius: 8px; }
 </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
@@ -35,16 +37,15 @@
   </div>
 
   <div class="flex flex-wrap gap-3 mb-6">
-    <button onclick="exportJSON()" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded text-sm font-medium">Exportar JSON</button>
+    <button id="btnExport" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded text-sm font-medium">Exportar JSON</button>
     <label class="bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded text-sm font-medium cursor-pointer">
       Importar JSON
-      <input type="file" accept=".json" onchange="importJSON(event)" class="hidden">
+      <input type="file" id="fileImport" accept=".json" class="hidden">
     </label>
-    <button onclick="resetFromRepo()" class="bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded text-sm font-medium">Recargar desde repo</button>
+    <button id="btnReset" class="bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded text-sm font-medium">Recargar desde repo</button>
   </div>
 
-  <div id="board" class="grid md:grid-cols-3 gap-4">
-  </div>
+  <div id="board" class="grid md:grid-cols-3 gap-4"></div>
 </div>
 
 <script>
@@ -56,19 +57,23 @@ async function loadTasks() {
   const local = localStorage.getItem(STORAGE_KEY);
   if (local) {
     try {
-      tasks = JSON.parse(local).tareas || [];
-      render();
-      return;
+      const parsed = JSON.parse(local);
+      if (parsed.tareas && parsed.tareas.length) {
+        tasks = parsed.tareas;
+        render();
+        return;
+      }
     } catch (e) {}
   }
   try {
     const res = await fetch("tasks.json?t=" + Date.now());
+    if (!res.ok) throw new Error("no json");
     const data = await res.json();
     tasks = data.tareas || [];
     saveLocal();
     render();
   } catch (err) {
-    document.getElementById("board").innerHTML = '<p class="text-red-600">No se pudo cargar tasks.json</p>';
+    document.getElementById("board").innerHTML = '<p class="text-red-600 col-span-3">No se pudo cargar tasks.json. Revisa que el archivo exista en el repositorio.</p>';
   }
 }
 
@@ -84,52 +89,86 @@ function render() {
         ${col}
         <span class="text-sm font-normal text-gray-500">${tasks.filter(t => t.estado === col).length}</span>
       </h2>
-      <div class="space-y-3" ondrop="drop(event)" ondragover="allowDrop(event)">
-        ${tasks.filter(t => t.estado === col).map(task => taskCard(task)).join("")}
+      <div class="space-y-3 drop-zone" data-drop="${col}">
+        ${tasks.filter(t => t.estado === col).map(task => taskCard(task)).join("") || '<div class="text-xs text-gray-400 italic py-4 text-center">Arrastra tareas aquí</div>'}
       </div>
     </div>
   `).join("");
+
+  attachEvents();
 }
 
 function taskCard(t) {
   const prioColor = t.prioridad === "alta" ? "border-red-400" : t.prioridad === "media" ? "border-amber-400" : "border-green-400";
+  const notesHtml = t.notas ? `<div class="text-xs bg-white mt-2 p-2 rounded border text-gray-700">${escapeHtml(t.notas)}</div>` : "";
   return `
-    <div class="task border-l-4 ${prioColor} bg-gray-50 rounded p-3 text-sm" draggable="true" ondragstart="drag(event)" data-id="${t.id}">
-      <div class="font-semibold">${t.titulo}</div>
-      <div class="text-xs text-gray-500 mt-1">${t.fase} · ${t.nivel}</div>
-      <div class="text-xs text-gray-600 mt-2">${t.descripcion}</div>
-      ${t.notas ? `<div class="text-xs bg-white mt-2 p-2 rounded border">${t.notas}</div>` : ""}
-      <button onclick="editNotes('${t.id}')" class="text-xs text-red-600 mt-2 hover:underline">Añadir nota</button>
+    <div class="task border-l-4 ${prioColor} bg-gray-50 rounded p-3 text-sm" draggable="true" data-id="${t.id}">
+      <div class="font-semibold">${escapeHtml(t.titulo)}</div>
+      <div class="text-xs text-gray-500 mt-1">${escapeHtml(t.fase)} · ${escapeHtml(t.nivel)}</div>
+      <div class="text-xs text-gray-600 mt-2">${escapeHtml(t.descripcion)}</div>
+      ${notesHtml}
+      <button class="btn-note text-xs text-red-600 mt-2 hover:underline" data-id="${t.id}">Añadir nota</button>
     </div>
   `;
 }
 
-function allowDrop(ev) { ev.preventDefault(); }
-function drag(ev) { ev.dataTransfer.setData("text", ev.target.dataset.id); }
-function drop(ev) {
-  ev.preventDefault();
-  const id = ev.dataTransfer.getData("text");
-  const col = ev.currentTarget.closest("[data-col]").dataset.col;
-  const task = tasks.find(t => t.id === id);
-  if (task) {
-    task.estado = col;
-    saveLocal();
-    render();
-  }
+function escapeHtml(str) {
+  if (!str) return "";
+  return str.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 }
 
-function editNotes(id) {
-  const task = tasks.find(t => t.id === id);
-  if (!task) return;
-  const note = prompt("Nota (visible para ambos cuando exportes):", task.notas || "");
-  if (note !== null) {
-    task.notas = note;
-    saveLocal();
-    render();
-  }
+function attachEvents() {
+  document.querySelectorAll(".task").forEach(el => {
+    el.addEventListener("dragstart", e => {
+      e.dataTransfer.setData("text/plain", el.dataset.id);
+      e.dataTransfer.effectAllowed = "move";
+      el.style.opacity = "0.5";
+    });
+    el.addEventListener("dragend", e => {
+      el.style.opacity = "1";
+    });
+  });
+
+  document.querySelectorAll(".drop-zone").forEach(zone => {
+    zone.addEventListener("dragover", e => {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = "move";
+      zone.classList.add("drag-over");
+    });
+    zone.addEventListener("dragleave", () => {
+      zone.classList.remove("drag-over");
+    });
+    zone.addEventListener("drop", e => {
+      e.preventDefault();
+      zone.classList.remove("drag-over");
+      const id = e.dataTransfer.getData("text/plain");
+      const newCol = zone.dataset.drop;
+      const task = tasks.find(t => t.id === id);
+      if (task && task.estado !== newCol) {
+        task.estado = newCol;
+        saveLocal();
+        render();
+      }
+    });
+  });
+
+  document.querySelectorAll(".btn-note").forEach(btn => {
+    btn.addEventListener("click", e => {
+      e.stopPropagation();
+      const id = btn.dataset.id;
+      const task = tasks.find(t => t.id === id);
+      if (!task) return;
+      const note = prompt("Nota (visible para ambos cuando exportes):", task.notas || "");
+      if (note !== null) {
+        task.notas = note;
+        saveLocal();
+        render();
+      }
+    });
+  });
 }
 
-function exportJSON() {
+document.getElementById("btnExport").addEventListener("click", () => {
   const data = {
     meta: { titulo: "Tablero de tareas — DOMI DELIS", actualizado: new Date().toISOString().slice(0,10) },
     columnas: COLUMNS,
@@ -141,9 +180,9 @@ function exportJSON() {
   a.download = "tasks.json";
   a.click();
   alert("JSON descargado. Súbelo al repositorio reemplazando tasks.json y haz commit para que el otro lo vea.");
-}
+});
 
-function importJSON(ev) {
+document.getElementById("fileImport").addEventListener("change", ev => {
   const file = ev.target.files[0];
   if (!file) return;
   const reader = new FileReader();
@@ -159,14 +198,14 @@ function importJSON(ev) {
     }
   };
   reader.readAsText(file);
-}
+});
 
-function resetFromRepo() {
+document.getElementById("btnReset").addEventListener("click", () => {
   if (confirm("¿Recargar las tareas originales del repositorio? Se perderán los cambios locales no exportados.")) {
     localStorage.removeItem(STORAGE_KEY);
     loadTasks();
   }
-}
+});
 
 loadTasks();
 </script>
