@@ -7,12 +7,42 @@
   "columnas": ["Pendiente", "En progreso", "Hecho"],
   "tareas": [
     {
+      "id": "t13",
+      "titulo": "Crear formulario de problemas internos para tiendas piloto",
+      "descripcion": "Formulario corto (Google Form o similar) que pregunte: 1) ¿Cuál es el problema interno que más te molesta hoy? 2) ¿Cuánto tiempo o dinero crees que te cuesta al mes? 3) ¿Qué ya intentaste? Prioridad alta antes de construir más funciones.",
+      "fase": "Fase 0 — Demostrar",
+      "nivel": "Descubrimiento",
+      "prioridad": "alta",
+      "estado": "Pendiente",
+      "notas": ""
+    },
+    {
+      "id": "t14",
+      "titulo": "Aplicar formulario a 5–8 tiendas candidatas y documentar respuestas",
+      "descripcion": "Llevar el formulario a tiendas de comida rápida de mesa. Registrar los 3 problemas más mencionados. Usar eso para priorizar qué construir primero (inventario, alertas, lista de compra, cierre de caja, etc.).",
+      "fase": "Fase 0 — Demostrar",
+      "nivel": "Descubrimiento",
+      "prioridad": "alta",
+      "estado": "Pendiente",
+      "notas": ""
+    },
+    {
+      "id": "t15",
+      "titulo": "Priorizar y construir 1–2 herramientas internas de alto valor (basado en el formulario)",
+      "descripcion": "Candidatas rápidas: inventario con alerta de stock bajo, lista de compra automática, cierre de caja diario, registro de mermas. Elegir según lo que digan las tiendas. No empezar por QR.",
+      "fase": "Fase 0 — Demostrar",
+      "nivel": "Producto",
+      "prioridad": "alta",
+      "estado": "Pendiente",
+      "notas": ""
+    },
+    {
       "id": "t1",
-      "titulo": "Priorizar flujo QR de mesa → pedido visible en panel de tienda",
-      "descripcion": "Asegurar que al escanear el QR el pedido llegue al panel de la tienda (app-tiendas) con estado claro. Ya existe base en frontend y app-tiendas.",
+      "titulo": "Flujo QR de mesa (opcional, después de herramientas internas)",
+      "descripcion": "Ofrecer solo si la tienda lo quiere probar. No es el valor principal ni obligatorio. Ya existe base en frontend y app-tiendas.",
       "fase": "Fase 0 — Demostrar",
       "nivel": "Nivel 1",
-      "prioridad": "alta",
+      "prioridad": "baja",
       "estado": "Pendiente",
       "notas": ""
     },
@@ -22,7 +52,7 @@
       "descripcion": "Permitir a la tienda subir foto, precio y opciones (ingredientes, adiciones, variantes obligatorias/opcionales). Base existente en frontend/data y app-tiendas.",
       "fase": "Fase 0 — Demostrar",
       "nivel": "Nivel 1",
-      "prioridad": "alta",
+      "prioridad": "media",
       "estado": "Pendiente",
       "notas": ""
     },
@@ -32,7 +62,7 @@
       "descripcion": "Recibido → Preparando → Listo. Usar lo que ya hay en app-tiendas/index-tienda.html y backend/routes/tiendaRoutes.js.",
       "fase": "Fase 0 — Demostrar",
       "nivel": "Nivel 2",
-      "prioridad": "alta",
+      "prioridad": "media",
       "estado": "Pendiente",
       "notas": ""
     },
@@ -49,10 +79,10 @@
     {
       "id": "t5",
       "titulo": "Instalar QR de mesa en 3–5 tiendas piloto",
-      "descripcion": "Imprimir y pegar QR. Acompañar la primera configuración del catálogo.",
+      "descripcion": "Solo si la tienda lo solicita después de probar las herramientas internas. No es obligatorio ni el primer paso.",
       "fase": "Fase 0 — Demostrar",
       "nivel": "Nivel 1",
-      "prioridad": "alta",
+      "prioridad": "baja",
       "estado": "Pendiente",
       "notas": ""
     },

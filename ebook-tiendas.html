@@ -19,12 +19,12 @@
   }
   h1.header { font-size: 13px; letter-spacing: 3px; color: #666; margin-bottom: 20px; text-transform: uppercase; font-weight: normal; }
   #book { box-shadow: 0 15px 40px rgba(0,0,0,0.12); }
-  .page { background: #fff; padding: 38px 42px; overflow: hidden; position: relative; }
-  .page h2 { color: #c0392b; font-size: 22px; margin-bottom: 14px; font-weight: normal; border-bottom: 2px solid #c0392b; padding-bottom: 6px; }
-  .page p { font-size: 15px; line-height: 1.55; margin-bottom: 11px; color: #333; }
-  .page ul { margin: 8px 0 12px 18px; }
-  .page li { font-size: 14.5px; line-height: 1.5; margin-bottom: 5px; color: #333; }
-  .page-number { position: absolute; bottom: 14px; right: 24px; font-size: 11px; color: #999; }
+  .page { background: #fff; padding: 36px 40px; overflow: hidden; position: relative; }
+  .page h2 { color: #c0392b; font-size: 21px; margin-bottom: 12px; font-weight: normal; border-bottom: 2px solid #c0392b; padding-bottom: 6px; }
+  .page p { font-size: 14.5px; line-height: 1.55; margin-bottom: 10px; color: #333; }
+  .page ul { margin: 8px 0 12px 16px; }
+  .page li { font-size: 14px; line-height: 1.5; margin-bottom: 5px; color: #333; }
+  .page-number { position: absolute; bottom: 14px; right: 22px; font-size: 11px; color: #999; }
   .cover {
     background: #111;
     color: white;
@@ -36,10 +36,10 @@
     text-align: center;
     padding: 40px;
   }
-  .cover h1 { font-size: 38px; letter-spacing: 1px; margin-bottom: 12px; }
-  .cover .sub { font-size: 16px; opacity: 0.85; max-width: 280px; line-height: 1.4; }
-  .cover .meta { margin-top: 40px; font-size: 11px; letter-spacing: 2px; opacity: 0.6; }
-  .highlight { background: #fdf2f0; padding: 12px 14px; margin: 12px 0; border-left: 3px solid #c0392b; font-size: 14.5px; }
+  .cover h1 { font-size: 36px; letter-spacing: 1px; margin-bottom: 12px; }
+  .cover .sub { font-size: 15px; opacity: 0.85; max-width: 280px; line-height: 1.4; }
+  .cover .meta { margin-top: 36px; font-size: 11px; letter-spacing: 2px; opacity: 0.6; }
+  .highlight { background: #fdf2f0; padding: 11px 14px; margin: 10px 0; border-left: 3px solid #c0392b; font-size: 14px; }
   .controls { margin-top: 22px; display: flex; gap: 10px; }
   .controls button { background: #c0392b; color: white; border: none; padding: 10px 20px; font-family: Georgia, serif; font-size: 14px; cursor: pointer; border-radius: 3px; }
   .controls button:hover { background: #a93226; }
@@ -53,73 +53,81 @@
   <div class="page" data-density="hard">
     <div class="cover">
       <h1>DOMI DELIS</h1>
-      <div class="sub">Qué reciben las tiendas y cómo les facilita el trabajo</div>
+      <div class="sub">Herramientas que ordenan tu operación interna y te ahorran dinero</div>
       <div class="meta">SANTUARIO · NOVIEMBRE 2026</div>
     </div>
   </div>
+
   <div class="page">
     <h2>Qué es DOMI DELIS para tu tienda</h2>
-    <p>Es una herramienta digital que te permite organizar tu menú, recibir pedidos por código QR en la mesa y ver todo en un panel, sin depender de WhatsApp ni de aplicaciones grandes que se quedan con comisión alta.</p>
-    <div class="highlight">No es una plataforma de domicilios que te cobra por cada entrega. Es software que ordena tu operación.</div>
-    <p>Durante los primeros 6 meses las tiendas fundadoras lo usan sin (o con muy baja) mensualidad, a cambio de configurar el catálogo, instalar el QR y generar pedidos reales.</p>
+    <p>Es una herramienta que te ayuda a controlar lo que pasa dentro de tu negocio: inventario, insumos que se acaban, cierre de caja y listas de compra. No cambia cómo atiendes a tus clientes en la mesa.</p>
+    <div class="highlight">El valor principal es ordenar tu operación interna, no obligarte a cambiar el flujo de pedidos que ya te funciona.</div>
+    <p>Durante el periodo fundacional se identifica primero qué problema interno te duele más (faltantes, desperdicio, cierre de caja, etc.) y se construye sobre eso.</p>
     <div class="page-number">2</div>
   </div>
+
   <div class="page">
-    <h2>Qué recibes</h2>
+    <h2>Lo que justifica pagar desde el inicio</h2>
+    <p>Estas son herramientas que se pueden implementar rápido y que resuelven problemas reales de dinero y tiempo:</p>
     <ul>
-      <li><strong>Catálogo digital</strong> con fotos, precios y personalizaciones (ingredientes, adiciones, variantes).</li>
-      <li><strong>Código QR por mesa.</strong> El cliente escanea, elige y el pedido llega directo a tu panel.</li>
-      <li><strong>Panel de pedidos</strong> con estados claros: recibido → preparando → listo.</li>
-      <li><strong>Enlace propio</strong> para pedidos (sin necesidad de que el cliente descargue una app).</li>
-      <li><strong>Historial simple</strong> de ventas y productos más pedidos.</li>
-      <li>Presencia en el listado local para que te encuentren.</li>
+      <li><strong>Inventario con alertas de stock bajo.</strong> Sabes qué se está acabando antes de que falte en hora pico.</li>
+      <li><strong>Lista de compra automática.</strong> Genera lo que necesitas pedir a proveedores según lo que se gastó.</li>
+      <li><strong>Cierre de caja diario.</strong> Resumen de ventas y efectivo del día en un solo lugar.</li>
+      <li><strong>Registro de mermas.</strong> Anotas lo que se bota o se vence para ver cuánto se pierde.</li>
+      <li><strong>Costo por plato (básico).</strong> Ves cuánto te cuesta realmente preparar lo que vendes.</li>
     </ul>
+    <p>Estas funciones no tocan cómo tomas pedidos en la mesa. Ordenan lo que ya haces por detrás.</p>
     <div class="page-number">3</div>
   </div>
+
   <div class="page">
-    <h2>Cómo se facilita tu trabajo</h2>
-    <p><strong>Menos errores de pedido.</strong> El cliente elige en el celular. Se reducen las anotaciones mal hechas o los ingredientes olvidados.</p>
-    <p><strong>Menos tiempo en WhatsApp.</strong> Los pedidos llegan ordenados en un solo lugar, no dispersos en mensajes.</p>
-    <p><strong>Visibilidad clara.</strong> Ves qué se está pidiendo y en qué estado está, sin preguntar en la cocina cada minuto.</p>
-    <p><strong>Datos básicos.</strong> Sabes qué productos se piden más. Eso ayuda a decidir qué mantener o promocionar.</p>
-    <div class="highlight">El objetivo es que la operación diaria sea más ordenada, no que tengas más trabajo.</div>
+    <h2>El QR de mesa es opcional</h2>
+    <p>No todas las tiendas quieren que el cliente pida desde el celular. Cambiar el flujo de pedidos puede afectar las ventas el primer día, y eso es un riesgo real.</p>
+    <div class="highlight">Por eso el QR de mesa no es obligatorio. Se ofrece solo si la tienda lo quiere probar, después de que las herramientas internas ya estén funcionando.</div>
+    <p>Si no quieres QR, sigues tomando pedidos como siempre. El valor de la herramienta está en el control interno (inventario, caja, listas de compra), no en cambiar cómo atiendes la mesa.</p>
     <div class="page-number">4</div>
   </div>
+
   <div class="page">
-    <h2>Cómo te beneficia</h2>
-    <ul>
-      <li>Puedes atender más pedidos de mesa sin aumentar el caos.</li>
-      <li>Reduces comisiones altas de apps grandes (Rappi y similares se quedan con porcentajes altos).</li>
-      <li>Tienes un canal propio que controlas.</li>
-      <li>El servicio de domicilios es opcional: solo cuando hay disponibilidad y el domiciliario cobra directo.</li>
-    </ul>
-    <p>No garantizamos un número mínimo de ventas ni disponibilidad permanente de domiciliarios. Lo que sí ofrecemos es una herramienta que organiza lo que ya haces.</p>
+    <h2>Cómo se facilita tu trabajo</h2>
+    <p><strong>Menos faltantes en hora pico.</strong> La alerta de stock bajo te avisa antes de que se acabe el insumo principal.</p>
+    <p><strong>Menos compras de emergencia.</strong> La lista de compra se arma sola según lo que se gastó.</p>
+    <p><strong>Cierre más rápido.</strong> El resumen del día te dice cuánto vendiste y cuánto efectivo debería haber.</p>
+    <p><strong>Menos desperdicio invisible.</strong> El registro de mermas muestra cuánto se está botando.</p>
+    <div class="highlight">El objetivo es que gastes menos tiempo adivinando y menos dinero en lo que se pierde o se acaba.</div>
     <div class="page-number">5</div>
   </div>
+
   <div class="page">
-    <h2>Puertas de crecimiento</h2>
-    <p><strong>A corto plazo:</strong> Pedidos de mesa más ordenados y menos dependencia de WhatsApp.</p>
-    <p><strong>A mediano plazo:</strong> Historial de ventas que te ayuda a ver qué funciona. Posibilidad de planes con más funciones (reportes, inventario simple) cuando demuestres uso real.</p>
-    <p><strong>A largo plazo:</strong> Presencia en un marketplace local que puede atraer clientes de Santuario y alrededores. Si el modelo funciona, se puede replicar en municipios cercanos.</p>
-    <div class="highlight">El crecimiento no depende de que tengamos más motos. Depende de que más tiendas usen la herramienta todos los días.</div>
+    <h2>Primero preguntamos qué te duele</h2>
+    <p>Antes de construir más funciones, las tiendas piloto llenan un formulario corto respondiendo:</p>
+    <ul>
+      <li>¿Cuál es el problema interno que más te molesta hoy? (faltantes, desperdicio, cierre de caja, pedidos mal anotados, etc.)</li>
+      <li>¿Cuánto tiempo o dinero crees que te cuesta ese problema al mes?</li>
+      <li>¿Qué ya intentaste para resolverlo?</li>
+    </ul>
+    <p>Con esas respuestas se prioriza qué construir primero. No se construye sobre suposiciones; se construye sobre lo que las tiendas piloto dicen que les duele ahora.</p>
     <div class="page-number">6</div>
   </div>
+
   <div class="page">
-    <h2>Periodo fundacional (primeros 6 meses)</h2>
+    <h2>Periodo fundacional</h2>
     <ul>
-      <li>Sin mensualidad (o muy baja) para tiendas fundadoras.</li>
-      <li>A cambio: catálogo completo, QR instalado y pedidos reales por la herramienta.</li>
-      <li>Después del periodo se activan planes según el valor demostrado (Pionero, Básico ~$20.000, Pro ~$35.000).</li>
-      <li>Puedes dejar de usar la herramienta cuando quieras. No hay contrato de permanencia forzado.</li>
+      <li>Las primeras tiendas prueban las herramientas internas (inventario, alertas, lista de compra, cierre de caja).</li>
+      <li>Llenan el formulario de problemas reales.</li>
+      <li>El QR de mesa se ofrece solo si lo quieren, después.</li>
+      <li>Se mide si las herramientas les ahorran tiempo o dinero.</li>
+      <li>Después del periodo se define el precio según el valor demostrado.</li>
     </ul>
-    <p>El objetivo de estos 6 meses es demostrar que la herramienta te facilita el trabajo, no cobrarte por algo que todavía no has probado.</p>
+    <p>Puedes dejar de usar la herramienta cuando quieras. No hay contrato de permanencia forzado.</p>
     <div class="page-number">7</div>
   </div>
+
   <div class="page" data-density="hard">
     <div class="cover">
-      <h1 style="font-size:32px;">DOMI DELIS</h1>
-      <div class="sub" style="margin-top:20px;">Software para restaurantes<br>y comercios locales</div>
-      <div class="meta" style="margin-top:40px;">domidelis.top</div>
+      <h1 style="font-size:30px;">DOMI DELIS</h1>
+      <div class="sub" style="margin-top:18px;">Software para ordenar<br>la operación interna<br>de tu negocio</div>
+      <div class="meta" style="margin-top:36px;">domidelis.top</div>
     </div>
   </div>
 </div>
