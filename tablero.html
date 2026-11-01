@@ -7,12 +7,12 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
   body { font-family: system-ui, -apple-system, sans-serif; }
-  .col { min-height: 420px; }
+  .col { min-height: 420px; position: relative; }
+  .col.drag-over { outline: 2px dashed #ef4444; outline-offset: -4px; background: #fff5f5; }
   .task { cursor: grab; user-select: none; }
   .task:active { cursor: grabbing; }
   .task.dragging { opacity: 0.45; }
-  .drop-zone { min-height: 100px; transition: background 0.15s; }
-  .drop-zone.drag-over { background: #fef2f2; border-radius: 8px; }
+  .drop-zone { min-height: 120px; }
 </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
@@ -96,12 +96,12 @@ function render() {
       ? '<div class="text-xs text-gray-400 italic py-6 text-center">Arrastra tareas aquí</div>'
       : '';
     return `
-      <div class="bg-white rounded-xl shadow-sm p-4 col">
-        <h2 class="font-bold text-lg mb-3 flex items-center justify-between">
+      <div class="bg-white rounded-xl shadow-sm p-4 col drop-target" data-drop="${col}">
+        <h2 class="font-bold text-lg mb-3 flex items-center justify-between pointer-events-none">
           ${col}
           <span class="text-sm font-normal text-gray-500">${colTasks.length}</span>
         </h2>
-        <div class="space-y-3 drop-zone" data-drop="${col}">
+        <div class="space-y-3 drop-zone">
           ${cards}
           ${placeholder}
         </div>
@@ -139,11 +139,11 @@ board.addEventListener("dragstart", e => {
 board.addEventListener("dragend", e => {
   const taskEl = e.target.closest(".task");
   if (taskEl) taskEl.classList.remove("dragging");
-  document.querySelectorAll(".drop-zone").forEach(z => z.classList.remove("drag-over"));
+  document.querySelectorAll(".drop-target").forEach(z => z.classList.remove("drag-over"));
 });
 
 board.addEventListener("dragover", e => {
-  const zone = e.target.closest(".drop-zone");
+  const zone = e.target.closest(".drop-target");
   if (!zone) return;
   e.preventDefault();
   e.dataTransfer.dropEffect = "move";
@@ -151,14 +151,14 @@ board.addEventListener("dragover", e => {
 });
 
 board.addEventListener("dragleave", e => {
-  const zone = e.target.closest(".drop-zone");
+  const zone = e.target.closest(".drop-target");
   if (zone && !zone.contains(e.relatedTarget)) {
     zone.classList.remove("drag-over");
   }
 });
 
 board.addEventListener("drop", e => {
-  const zone = e.target.closest(".drop-zone");
+  const zone = e.target.closest(".drop-target");
   if (!zone) return;
   e.preventDefault();
   zone.classList.remove("drag-over");
