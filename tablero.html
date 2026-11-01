@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tablero de tareas — DOMI DELIS</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { font-family: system-ui, -apple-system, sans-serif; }
+  .col { min-height: 400px; }
+  .task { cursor: grab; }
+  .task:active { cursor: grabbing; }
+</style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+<div class="max-w-7xl mx-auto px-4 py-8">
+  <header class="mb-8 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+    <div>
+      <a href="index.html" class="text-sm text-red-600 hover:underline">← Volver al inicio</a>
+      <h1 class="text-3xl font-bold mt-2">Tablero de tareas</h1>
+      <p class="text-gray-600">Modelo de negocio DOMI DELIS · Santuario</p>
+    </div>
+    <div class="text-sm text-gray-500 text-right">
+      <p>Los cambios se guardan en tu navegador.</p>
+      <p>Para compartir: Exportar JSON y subirlo al repo.</p>
+    </div>
+  </header>
+
+  <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-6 text-sm">
+    <strong>Cómo colaborar sin backend:</strong> 
+    1) Mueve y edita tareas aquí (se guarda en tu navegador). 
+    2) Cuando quieras que el otro vea los cambios, pulsa <em>Exportar JSON</em>, reemplaza el archivo <code>tasks.json</code> en el repositorio y haz commit. 
+    3) El otro recarga la página.
+  </div>
+
+  <div class="flex flex-wrap gap-3 mb-6">
+    <button onclick="exportJSON()" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded text-sm font-medium">Exportar JSON</button>
+    <label class="bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded text-sm font-medium cursor-pointer">
+      Importar JSON
+      <input type="file" accept=".json" onchange="importJSON(event)" class="hidden">
+    </label>
+    <button onclick="resetFromRepo()" class="bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded text-sm font-medium">Recargar desde repo</button>
+  </div>
+
+  <div id="board" class="grid md:grid-cols-3 gap-4">
+  </div>
+</div>
+
+<script>
+const COLUMNS = ["Pendiente", "En progreso", "Hecho"];
+const STORAGE_KEY = "domidelis_tasks_v1";
+let tasks = [];
+
+async function loadTasks() {
+  const local = localStorage.getItem(STORAGE_KEY);
+  if (local) {
+    try {
+      tasks = JSON.parse(local).tareas || [];
+      render();
+      return;
+    } catch (e) {}
+  }
+  try {
+    const res = await fetch("tasks.json?t=" + Date.now());
+    const data = await res.json();
+    tasks = data.tareas || [];
+    saveLocal();
+    render();
+  } catch (err) {
+    document.getElementById("board").innerHTML = '<p class="text-red-600">No se pudo cargar tasks.json</p>';
+  }
+}
+
+function saveLocal() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify({ tareas: tasks }));
+}
+
+function render() {
+  const board = document.getElementById("board");
+  board.innerHTML = COLUMNS.map(col => `
+    <div class="bg-white rounded-xl shadow-sm p-4 col" data-col="${col}">
+      <h2 class="font-bold text-lg mb-3 flex items-center justify-between">
+        ${col}
+        <span class="text-sm font-normal text-gray-500">${tasks.filter(t => t.estado === col).length}</span>
+      </h2>
+      <div class="space-y-3" ondrop="drop(event)" ondragover="allowDrop(event)">
+        ${tasks.filter(t => t.estado === col).map(task => taskCard(task)).join("")}
+      </div>
+    </div>
+  `).join("");
+}
+
+function taskCard(t) {
+  const prioColor = t.prioridad === "alta" ? "border-red-400" : t.prioridad === "media" ? "border-amber-400" : "border-green-400";
+  return `
+    <div class="task border-l-4 ${prioColor} bg-gray-50 rounded p-3 text-sm" draggable="true" ondragstart="drag(event)" data-id="${t.id}">
+      <div class="font-semibold">${t.titulo}</div>
+      <div class="text-xs text-gray-500 mt-1">${t.fase} · ${t.nivel}</div>
+      <div class="text-xs text-gray-600 mt-2">${t.descripcion}</div>
+      ${t.notas ? `<div class="text-xs bg-white mt-2 p-2 rounded border">${t.notas}</div>` : ""}
+      <button onclick="editNotes('${t.id}')" class="text-xs text-red-600 mt-2 hover:underline">Añadir nota</button>
+    </div>
+  `;
+}
+
+function allowDrop(ev) { ev.preventDefault(); }
+function drag(ev) { ev.dataTransfer.setData("text", ev.target.dataset.id); }
+function drop(ev) {
+  ev.preventDefault();
+  const id = ev.dataTransfer.getData("text");
+  const col = ev.currentTarget.closest("[data-col]").dataset.col;
+  const task = tasks.find(t => t.id === id);
+  if (task) {
+    task.estado = col;
+    saveLocal();
+    render();
+  }
+}
+
+function editNotes(id) {
+  const task = tasks.find(t => t.id === id);
+  if (!task) return;
+  const note = prompt("Nota (visible para ambos cuando exportes):", task.notas || "");
+  if (note !== null) {
+    task.notas = note;
+    saveLocal();
+    render();
+  }
+}
+
+function exportJSON() {
+  const data = {
+    meta: { titulo: "Tablero de tareas — DOMI DELIS", actualizado: new Date().toISOString().slice(0,10) },
+    columnas: COLUMNS,
+    tareas: tasks
+  };
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "tasks.json";
+  a.click();
+  alert("JSON descargado. Súbelo al repositorio reemplazando tasks.json y haz commit para que el otro lo vea.");
+}
+
+function importJSON(ev) {
+  const file = ev.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const data = JSON.parse(e.target.result);
+      tasks = data.tareas || [];
+      saveLocal();
+      render();
+      alert("Importado correctamente.");
+    } catch (err) {
+      alert("JSON inválido");
+    }
+  };
+  reader.readAsText(file);
+}
+
+function resetFromRepo() {
+  if (confirm("¿Recargar las tareas originales del repositorio? Se perderán los cambios locales no exportados.")) {
+    localStorage.removeItem(STORAGE_KEY);
+    loadTasks();
+  }
+}
+
+loadTasks();
+</script>
+</body>
+</html>

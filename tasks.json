@@ -1,0 +1,130 @@
+{
+  "meta": {
+    "titulo": "Tablero de tareas — DOMI DELIS Modelo de Negocio",
+    "actualizado": "2026-11-01",
+    "nota": "Edita este archivo directamente en GitHub (o descarga, modifica y vuelve a subir). Ambos pueden ver los cambios al recargar la página."
+  },
+  "columnas": ["Pendiente", "En progreso", "Hecho"],
+  "tareas": [
+    {
+      "id": "t1",
+      "titulo": "Priorizar flujo QR de mesa → pedido visible en panel de tienda",
+      "descripcion": "Asegurar que al escanear el QR el pedido llegue al panel de la tienda (app-tiendas) con estado claro. Ya existe base en frontend y app-tiendas.",
+      "fase": "Fase 0 — Demostrar",
+      "nivel": "Nivel 1",
+      "prioridad": "alta",
+      "estado": "Pendiente",
+      "notas": ""
+    },
+    {
+      "id": "t2",
+      "titulo": "Completar catálogo con fotos, precios y personalizaciones",
+      "descripcion": "Permitir a la tienda subir foto, precio y opciones (ingredientes, adiciones, variantes obligatorias/opcionales). Base existente en frontend/data y app-tiendas.",
+      "fase": "Fase 0 — Demostrar",
+      "nivel": "Nivel 1",
+      "prioridad": "alta",
+      "estado": "Pendiente",
+      "notas": ""
+    },
+    {
+      "id": "t3",
+      "titulo": "Panel de tienda: ver pedidos en tiempo real y cambiar estados",
+      "descripcion": "Recibido → Preparando → Listo. Usar lo que ya hay en app-tiendas/index-tienda.html y backend/routes/tiendaRoutes.js.",
+      "fase": "Fase 0 — Demostrar",
+      "nivel": "Nivel 2",
+      "prioridad": "alta",
+      "estado": "Pendiente",
+      "notas": ""
+    },
+    {
+      "id": "t4",
+      "titulo": "Listar 10–15 tiendas candidatas a fundadoras en Santuario",
+      "descripcion": "Identificar restaurantes y comercios de comida rápida. Verificar ubicación y tipo de operación.",
+      "fase": "Fase 0 — Demostrar",
+      "nivel": "Comercial",
+      "prioridad": "alta",
+      "estado": "Pendiente",
+      "notas": ""
+    },
+    {
+      "id": "t5",
+      "titulo": "Instalar QR de mesa en 3–5 tiendas piloto",
+      "descripcion": "Imprimir y pegar QR. Acompañar la primera configuración del catálogo.",
+      "fase": "Fase 0 — Demostrar",
+      "nivel": "Nivel 1",
+      "prioridad": "alta",
+      "estado": "Pendiente",
+      "notas": ""
+    },
+    {
+      "id": "t6",
+      "titulo": "Definir y documentar el recargo de $500 y esquema de pago directo al domiciliario",
+      "descripcion": "La plataforma no intermedia el dinero del envío. El domiciliario cobra la tarifa completa. Mitiga riesgo Ley 2466.",
+      "fase": "Fase 0 — Demostrar",
+      "nivel": "Legal / Operativo",
+      "prioridad": "media",
+      "estado": "Pendiente",
+      "notas": ""
+    },
+    {
+      "id": "t7",
+      "titulo": "Buscar asesoría legal básica sobre Ley 2466 y cláusula de no recaudo",
+      "descripcion": "Al menos 1 hora de consulta. Documentar la cláusula que se usará en los términos.",
+      "fase": "Fase 0 — Demostrar",
+      "nivel": "Legal",
+      "prioridad": "media",
+      "estado": "Pendiente",
+      "notas": ""
+    },
+    {
+      "id": "t8",
+      "titulo": "Historial simple de ventas y productos más pedidos",
+      "descripcion": "Vista básica en el panel de tienda. No hace falta inventario complejo todavía.",
+      "fase": "Fase 0 — Demostrar",
+      "nivel": "Nivel 3",
+      "prioridad": "media",
+      "estado": "Pendiente",
+      "notas": ""
+    },
+    {
+      "id": "t9",
+      "titulo": "One-pager comercial listo para mostrar a tiendas",
+      "descripcion": "Versión imprimible de 1 página con qué incluye, periodo fundacional y qué no se garantiza.",
+      "fase": "Fase 0 — Demostrar",
+      "nivel": "Comercial",
+      "prioridad": "media",
+      "estado": "Pendiente",
+      "notas": ""
+    },
+    {
+      "id": "t10",
+      "titulo": "Medir pedidos gestionados por la app (meta ≥30/mes al mes 6)",
+      "descripcion": "Contador simple o reporte mensual. Sirve para decidir si se activa el cobro.",
+      "fase": "Fase 0 — Demostrar",
+      "nivel": "Métricas",
+      "prioridad": "media",
+      "estado": "Pendiente",
+      "notas": ""
+    },
+    {
+      "id": "t11",
+      "titulo": "Activar planes de pago (Pionero / Básico ~$20k / Pro ~$35k) solo con evidencia",
+      "descripcion": "No cobrar antes de demostrar uso real. Documentar criterios de activación.",
+      "fase": "Fase 1 — Monetizar",
+      "nivel": "Comercial",
+      "prioridad": "baja",
+      "estado": "Pendiente",
+      "notas": ""
+    },
+    {
+      "id": "t12",
+      "titulo": "Presencia en marketplace local (frontend existente)",
+      "descripcion": "Asegurar que las tiendas fundadoras aparezcan en el listado de consumidores.",
+      "fase": "Fase 0 — Demostrar",
+      "nivel": "Nivel 5",
+      "prioridad": "baja",
+      "estado": "Pendiente",
+      "notas": ""
+    }
+  ]
+}
