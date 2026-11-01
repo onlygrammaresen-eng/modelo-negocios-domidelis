@@ -3,110 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DOMI DELIS — Modelo de Negocio Oficial y Mapa de Tareas</title>
+<title>DOMI DELIS — Modelo de Negocio Oficial</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
   body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-  .phase-card { transition: transform 0.2s ease, box-shadow 0.2s ease; }
-  .phase-card:hover { transform: translateY(-2px); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); }
-  .task-item { border-left: 3px solid #e5e7eb; }
-  .task-item.priority-high { border-left-color: #ef4444; }
-  .task-item.priority-medium { border-left-color: #f59e0b; }
-  .task-item.priority-low { border-left-color: #10b981; }
-  .one-pager { page-break-inside: avoid; }
-  @media print {
-    .no-print { display: none; }
-    body { background: white; }
-    .shadow-sm { box-shadow: none; }
-  }
 </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
-<div class="max-w-5xl mx-auto px-4 py-8">
+<div class="max-w-3xl mx-auto px-4 py-16 text-center">
 
-  <header class="text-center mb-10">
-    <div class="inline-block bg-red-600 text-white px-4 py-1 rounded-full text-sm font-semibold mb-3">Documento Oficial — Noviembre 2026</div>
-    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-3">DOMI DELIS</h1>
-    <p class="text-xl text-gray-600">Modelo de Negocio Oficial y Mapa de Tareas</p>
-    <p class="text-sm text-gray-500 mt-2">Santuario, Antioquia · Para: Alejandro Pérez Restrepo y James David Rincón Bulla</p>
-  </header>
+  <div class="inline-block bg-red-600 text-white px-4 py-1 rounded-full text-sm font-semibold mb-6">Noviembre 2026</div>
+  
+  <h1 class="text-5xl font-bold text-gray-900 mb-4">DOMI DELIS</h1>
+  <p class="text-xl text-gray-600 mb-2">Modelo de Negocio Oficial</p>
+  <p class="text-sm text-gray-500 mb-12">Santuario, Antioquia</p>
 
-  <section class="one-pager bg-white rounded-xl shadow-sm p-6 md:p-8 mb-10 border-2 border-red-200">
-    <div class="text-center mb-6">
-      <h2 class="text-3xl font-bold text-gray-900">DOMI DELIS Negocios</h2>
-      <p class="text-lg text-red-600 font-semibold mt-1">Software para restaurantes y comercios de Santuario</p>
-      <p class="text-sm text-gray-600 mt-2">Organiza tu menú, recibe pedidos por QR de mesa y controla tus ventas. Sin depender de WhatsApp ni de aplicaciones grandes que se quedan con comisión alta.</p>
-    </div>
-    <div class="grid md:grid-cols-2 gap-6 mb-6">
-      <div>
-        <h3 class="font-bold text-gray-900 mb-3">Qué incluye</h3>
-        <ul class="space-y-2 text-sm">
-          <li class="flex items-start"><span class="text-green-600 mr-2">✓</span> Catálogo digital con fotos, precios y personalizaciones (ingredientes, adiciones, variantes)</li>
-          <li class="flex items-start"><span class="text-green-600 mr-2">✓</span> Código QR por mesa: el cliente escanea, elige y el pedido llega directo a tu panel</li>
-          <li class="flex items-start"><span class="text-green-600 mr-2">✓</span> Panel de administración para ver pedidos, estados y historial de ventas</li>
-          <li class="flex items-start"><span class="text-green-600 mr-2">✓</span> Enlace propio para pedidos (sin necesidad de app del cliente)</li>
-          <li class="flex items-start"><span class="text-green-600 mr-2">✓</span> Material publicitario básico y presencia en el marketplace local</li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="font-bold text-gray-900 mb-3">Cómo funciona el periodo fundacional</h3>
-        <ul class="space-y-2 text-sm">
-          <li class="flex items-start"><span class="text-blue-600 mr-2">•</span> Primeros 6 meses sin mensualidad (o muy baja) para tiendas fundadoras</li>
-          <li class="flex items-start"><span class="text-blue-600 mr-2">•</span> A cambio: catálogo completo, QR instalado y datos de pedidos reales</li>
-          <li class="flex items-start"><span class="text-blue-600 mr-2">•</span> Después del periodo se activan planes según el valor demostrado</li>
-          <li class="flex items-start"><span class="text-blue-600 mr-2">•</span> El servicio de domicilios es opcional y solo se ofrece cuando hay disponibilidad</li>
-          <li class="flex items-start"><span class="text-blue-600 mr-2">•</span> El domiciliario cobra la tarifa completa directamente al cliente</li>
-        </ul>
-      </div>
-    </div>
-    <div class="bg-gray-50 rounded-lg p-4 text-center">
-      <p class="font-semibold text-gray-900">No garantizamos ventas mínimas ni disponibilidad permanente de domiciliarios.</p>
-      <p class="text-sm text-gray-600 mt-1">Lo que sí garantizamos es una herramienta que organiza tu operación y facilita que tus clientes te pidan de forma ordenada.</p>
-      <p class="text-sm font-medium text-red-700 mt-3">domidelis.top · Santuario, Antioquia</p>
-    </div>
-  </section>
+  <div class="bg-white rounded-xl shadow-sm p-8 mb-8 border border-gray-100">
+    <p class="text-lg mb-6">Software para restaurantes y comercios locales.<br>El modelo que escala sin depender de la logística.</p>
+    <a href="revista.html" class="inline-block bg-red-600 hover:bg-red-700 text-white font-semibold px-8 py-4 rounded-lg text-lg transition">
+      Ver revista del modelo de negocio →
+    </a>
+  </div>
 
-  <section class="bg-white rounded-xl shadow-sm p-6 md:p-8 mb-8 border border-gray-100">
-    <h2 class="text-2xl font-bold mb-4 text-gray-900">1. Veredicto y Modelo Oficial</h2>
-    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-4 rounded-r">
-      <p class="font-semibold text-blue-900">La reunión del 30 de octubre acertó: el camino es software para tiendas, no logística propia.</p>
-    </div>
-    <p class="mb-4">Después de analizar la reunión, los cálculos matemáticos del modelo actual, la evidencia de negocios similares y el riesgo legal de la Ley 2466 de 2025, definimos el modelo oficial así:</p>
-    <div class="grid md:grid-cols-3 gap-4 mt-6">
-      <div class="bg-green-50 p-4 rounded-lg border border-green-200">
-        <h3 class="font-bold text-green-800 mb-2">Principal</h3>
-        <p class="font-semibold">DOMI DELIS Negocios</p>
-        <p class="text-sm mt-1">Software SaaS para restaurantes y comercios. Suscripción mensual por catálogo, QR de mesa, pedidos, reportes e inventario.</p>
-      </div>
-      <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
-        <h3 class="font-bold text-blue-800 mb-2">Canal</h3>
-        <p class="font-semibold">Marketplace</p>
-        <p class="text-sm mt-1">App de consumidores para descubrir tiendas y hacer pedidos. Canal de adquisición, no la principal fuente de ingresos.</p>
-      </div>
-      <div class="bg-orange-50 p-4 rounded-lg border border-orange-200">
-        <h3 class="font-bold text-orange-800 mb-2">Opcional</h3>
-        <p class="font-semibold">DOMI DELIS Delivery</p>
-        <p class="text-sm mt-1">Coordinación de entregas solo cuando hay disponibilidad y margen positivo. Plataforma no intermedia dinero del envío.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="bg-white rounded-xl shadow-sm p-6 md:p-8 mb-8 border border-gray-100">
-    <h2 class="text-2xl font-bold mb-4">2. Por qué este modelo (y no el actual)</h2>
-    <ul class="space-y-3">
-      <li class="flex items-start"><span class="text-red-500 mr-2">✗</span> <span><strong>Cobrar por domicilio como ingreso principal es matemáticamente inviable.</strong> Con tarifas de $4.000–$14.000 y pagos de $4.000–$6.000 al domiciliario, el margen por pedido está entre −$250 y +$1.750. Para un salario mínimo (~$2.000.000) se necesitan 38–89 pedidos/día todos los días. En Santuario no existe ese volumen.</span></li>
-      <li class="flex items-start"><span class="text-red-500 mr-2">✗</span> <span><strong>Mensualidad de $10.000 es simbólica.</strong> 25 tiendas generan $250.000/mes. No cubre operación, desarrollo ni riesgo.</span></li>
-      <li class="flex items-start"><span class="text-red-500 mr-2">✗</span> <span><strong>Riesgo legal alto (Ley 2466 de 2025).</strong> Si la plataforma coordina, fija tarifas y maneja el dinero de las entregas, puede ser clasificada como plataforma de reparto con obligaciones de aportes a salud (60%), pensión y ARL (100%).</span></li>
-      <li class="flex items-start"><span class="text-green-600 mr-2">✓</span> <span><strong>El software sí escala.</strong> Slice lo demostró en pueblos pequeños de EE.UU. con tarifas planas y sin flota propia. GloriaFood muestra que el freemium funciona. En Colombia, Fudo y Comanda cobran $50k–$63k/mes por herramientas similares.</span></li>
-    </ul>
-  </section>
-
-  <footer class="text-center text-xs text-gray-500 mt-12 pb-8">
-    <p>Documento generado a partir de la reunión del 30 de octubre de 2026, análisis matemáticos, evidencia de mercado y riesgo regulatorio de la Ley 2466 de 2025.</p>
-    <p class="mt-1"><a href="guia-libro.html" class="text-red-600 underline">Ver guía en formato libro</a></p>
-  </footer>
+  <div class="text-sm text-gray-500">
+    <p>Alejandro Pérez Restrepo · James David Rincón Bulla</p>
+    <p class="mt-2"><a href="https://domidelis.top" class="text-red-600 hover:underline">domidelis.top</a></p>
+  </div>
 
 </div>
+
 </body>
 </html>
