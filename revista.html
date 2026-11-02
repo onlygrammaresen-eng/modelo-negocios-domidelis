@@ -18,12 +18,22 @@
     padding: 10px 10px 90px 10px;
   }
   h1 { font-size: 12px; letter-spacing: 2px; color: #666; margin-bottom: 10px; text-transform: uppercase; font-weight: normal; }
-  #book { box-shadow: 0 15px 40px rgba(0,0,0,0.15); }
-  .page { background: #fff; padding: 36px 40px; overflow: hidden; position: relative; }
-  .page h2 { color: #1a5276; font-size: 21px; margin-bottom: 14px; font-weight: normal; border-bottom: 2px solid #1a5276; padding-bottom: 6px; }
-  .page p { font-size: 14.5px; line-height: 1.55; margin-bottom: 10px; color: #333; }
-  .page ul { margin: 8px 0 12px 16px; }
-  .page li { font-size: 14px; line-height: 1.5; margin-bottom: 4px; color: #333; }
+  #book { 
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15); 
+    overflow: hidden;
+    position: relative;
+  }
+  .page { 
+    background: #fff; 
+    padding: 28px 32px; 
+    overflow: hidden; 
+    position: relative; 
+    height: 100%;
+  }
+  .page h2 { color: #1a5276; font-size: 19px; margin-bottom: 10px; font-weight: normal; border-bottom: 2px solid #1a5276; padding-bottom: 4px; }
+  .page p { font-size: 13.5px; line-height: 1.45; margin-bottom: 8px; color: #333; }
+  .page ul { margin: 6px 0 10px 14px; }
+  .page li { font-size: 13px; line-height: 1.4; margin-bottom: 3px; color: #333; }
   .page-number { position: absolute; bottom: 14px; right: 22px; font-size: 11px; color: #999; }
   .cover { background: #0f1419; color: white; height: 100%; position: relative; overflow: hidden; padding: 0; }
   .highlight { background: #eaf2f8; padding: 10px 14px; margin: 10px 0; border-left: 3px solid #1a5276; font-size: 14px; }
@@ -215,22 +225,29 @@
 </div>
 
 <script>
+const isMobile = window.innerWidth < 500;
+const bookWidth = isMobile ? 340 : 420;
+const bookHeight = isMobile ? 560 : 620;
+
+document.getElementById('book').style.width = bookWidth + 'px';
+document.getElementById('book').style.height = bookHeight + 'px';
+
 const pageFlip = new St.PageFlip(document.getElementById('book'), {
-  width: window.innerWidth < 500 ? 340 : 420,
-  height: window.innerWidth < 500 ? 520 : 600,
+  width: bookWidth,
+  height: bookHeight,
   size: 'fixed',
   minWidth: 280,
   maxWidth: 500,
   minHeight: 400,
-  maxHeight: 700,
+  maxHeight: 750,
   showCover: true,
   mobileScrollSupport: false,
   drawShadow: true,
-  flippingTime: 800,
+  flippingTime: 600,
   usePortrait: true,
   startPage: 0,
   autoSize: false,
-  maxShadowOpacity: 0.5,
+  maxShadowOpacity: 0.3,
   showPageCorners: true,
   disableFlipByClick: false
 });
