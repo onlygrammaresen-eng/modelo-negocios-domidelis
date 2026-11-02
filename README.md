@@ -1,6 +1,6 @@
 # DOMI DELIS — Modelo de Negocio Oficial
 
-Documento de trabajo para Alejandro Pérez Restrepo y James David Rincón Bulla.
+Documento de trabajo de domidelis.
 
 ## Páginas
 
