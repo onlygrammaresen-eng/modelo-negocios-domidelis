@@ -9,7 +9,7 @@
     {
       "id": "t13",
       "titulo": "Crear formulario de problemas internos para tiendas piloto",
-      "descripcion": "Formulario corto (Google Form o similar) que pregunte: 1) ¿Cuál es el problema interno que más te molesta hoy? 2) ¿Cuánto tiempo o dinero crees que te cuesta al mes? 3) ¿Qué ya intentaste? Prioridad alta antes de construir más funciones.",
+      "descripcion": "Formulario con las 15 preguntas de procesos internos (cierre de caja, control de insumos, lista de compra, costo por plato, mermas, etc.) + opcional. Prioridad alta antes de construir más funciones.",
       "fase": "Fase 0 — Demostrar",
       "nivel": "Descubrimiento",
       "prioridad": "alta",
@@ -128,8 +128,8 @@
     },
     {
       "id": "t10",
-      "titulo": "Medir pedidos gestionados por la app (meta ≥30/mes al mes 6)",
-      "descripcion": "Contador simple o reporte mensual. Sirve para decidir si se activa el cobro.",
+      "titulo": "Medir uso de herramientas internas (meta ≥10 tiendas activas al mes 6)",
+      "descripcion": "Contador simple de tiendas que usan inventario, alertas, lista de compra o cierre de caja de forma regular. Sirve para decidir si se activa el cobro.",
       "fase": "Fase 0 — Demostrar",
       "nivel": "Métricas",
       "prioridad": "media",
